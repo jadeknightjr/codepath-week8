@@ -44,11 +44,11 @@ For the feedback page of the Green site, you could easily do some cross site scr
 For the red site, it’s possible for you to access Salesperson without being logged in.  This is because to reference salesperson, they use id which they public show on the url. In my case, even if you aren’t logged in, you could just do something like
  https://104.198.208.81/red/public/salesperson.php?id=13
 To grab information about the salesperson who has an id of 13 whether ro not you are logged in.
-![](user_enum.gif)
+![](IDOR.gif)
 
 ### Vulnerability #2: Cross-Site Request Forgery
-
-![](IDOR.gif)
+I worked on this part of the assignment last. Therefore, it was easy to pinpoint which site had this weakness. I submitted a feedback that provided a link that would change a user's information. Using some social engineering, I can see how an uninformaed user amy click a malign link to trigger something terrible. In this case, my think simply sent a form to edit a user's lastname to be funny.
+![](csrf.gif)
 ## Notes
 
 Describe any challenges encountered while doing the work
