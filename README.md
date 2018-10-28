@@ -24,18 +24,19 @@ To discover this exploit, ti required little more than brute force. One of the h
 https://104.198.208.81/blue/public/staff/salespeople/show.php?id='OR SLEEP(5)=0--'
 
 We manage to perform a sql injection, making the page take longer to render completely. 
+![](sql.gif)
 
 ### Vulnerability #2: Session Hijacking/Fixation
 For this exploit, we first open two different browsers. I used Chrome and IE.  On both sites, we go to the login screen(https://104.198.208.81/blue/public/staff/login.php) and the provided Codepath PHP tool (https://104.198.208.81/blue/public/hacktools/change_session_id.php). We used IE to login. Then by going to the PHP tool on the IE, we can grab the PHPSESSIONID, copy and paste it into the Codepath PHP tool on Chrome and click change. Now we can access the blue site on chrome despite never actually logging.
-
+![](session-hijacking.gif)
 ## Green
 
 ### Vulnerability #1: Username Enumeration
 When you put an arbitrary username that isn’t an actual user, you get a simple Log in was unsuccessful. However, if you use a username that exists but wrong password, you get a bolded Log in was unsuccessful. This allows anyone to figure out if a username is valid or not.
-
+![](user_enumeration.gif)
 ### Vulnerability #2: Cross-Site Scripting
 For the feedback page of the Green site, you could easily do some cross site scripting. Simply entering any javascript such as <script>alert('test');</script> into the feedback input box would allow you to cause javascript to run whenever anyone goes to see all feedback. Rather than printing a message, a malicious user could do so much more.
-
+![](cross-site.gif)
 
 ## Red
 
@@ -43,11 +44,11 @@ For the feedback page of the Green site, you could easily do some cross site scr
 For the red site, it’s possible for you to access Salesperson without being logged in.  This is because to reference salesperson, they use id which they public show on the url. In my case, even if you aren’t logged in, you could just do something like
  https://104.198.208.81/red/public/salesperson.php?id=13
 To grab information about the salesperson who has an id of 13 whether ro not you are logged in.
-
+![](user_enum.gif)
 
 ### Vulnerability #2: Cross-Site Request Forgery
 
-
+![](IDOR.gif)
 ## Notes
 
 Describe any challenges encountered while doing the work
